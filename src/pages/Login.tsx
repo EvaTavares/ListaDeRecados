@@ -40,10 +40,12 @@ const Login: React.FC = () => {
   const verification = (): boolean => {
     if (!email || !password) {
       Swal.fire({
-        title: 'Existem campos vazios, favor preencher',
+        title: 'Existem campos vazios, favor preencher os campos corretamente',
         icon: 'warning',
         confirmButtonText: 'Confirmar',
-        timer: 3000
+        confirmButtonColor: '#5C6103',
+        background: '#AE9626',
+        timer: 4000
       });
       return false;
     }
@@ -51,10 +53,12 @@ const Login: React.FC = () => {
     const users = usersRedux.find(user => user.email === email && user.password === password);
     if (!users) {
       Swal.fire({
-        title: 'Usuário não encontrado, verifique',
+        title: 'Usuário não encontrado, por favor verifique e-mail ou senha',
         icon: 'warning',
         confirmButtonText: 'Confirmar',
-        timer: 3000
+        confirmButtonColor: '#5C6103',
+        background: '#AE9626',
+        timer: 4000
       });
       return false;
     }

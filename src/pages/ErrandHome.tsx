@@ -70,6 +70,8 @@ const ErrandHome: React.FC = () => {
         title: 'Existem campos vazios, favor preencher',
         icon: 'warning',
         confirmButtonText: 'Confirmar',
+        confirmButtonColor: '#5C6103',
+        background: '#AE9626',
         timer: 3000
       });
       return false;
@@ -79,6 +81,8 @@ const ErrandHome: React.FC = () => {
       text: 'Recado cadastrado com sucesso.',
       icon: 'success',
       confirmButtonText: 'Confirmar',
+      confirmButtonColor: '#5C6103',
+      background: '#AE9626',
       timer: 2000
     });
 
@@ -99,21 +103,27 @@ const ErrandHome: React.FC = () => {
       text: 'Você não poderá reverter isso!',
       icon: 'error',
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
+      confirmButtonColor: '#5C6103',
       cancelButtonColor: '#d33',
       cancelButtonText: 'Cancelar',
-      confirmButtonText: 'Sim, quero deletar!'
+      confirmButtonText: 'Sim, quero deletar!',
+      background: '#AE9626'
     }).then(result => {
       if (result.isConfirmed) {
         dispatch(removeErrand(itemDelete.id));
         // chamar outro dispatch para remover o intem e salvar
-        Swal.fire('Deletado!', 'Sua transação foi excluida.', 'success');
+        Swal.fire({
+          title: 'Deletado! Seu recado foi excluido com sucesso.',
+          icon: 'success',
+          background: '#AE9626',
+          confirmButtonColor: '#5C6103'
+        });
       }
     });
   };
 
   const handleClear = () => {
-    setDescription('');
+    setTitle('');
     setDescription('');
   };
 
@@ -124,8 +134,10 @@ const ErrandHome: React.FC = () => {
         <ContainerChina>
           <Grid
             item
-            lg={12}
             xs={12}
+            sm={12}
+            md={12}
+            lg={12}
             style={{
               padding: '20px'
             }}
@@ -142,6 +154,10 @@ const ErrandHome: React.FC = () => {
             </Typography>
             <Divider />
             <Grid
+              xs={12}
+              sm={12}
+              md={12}
+              lg={12}
               item
               container
               spacing={1}

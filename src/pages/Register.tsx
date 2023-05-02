@@ -5,6 +5,18 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 import { addContact, selectAll } from '../store/modules/contactsSlice';
 import InputApp from '../components/InputApp';
+import Swal from 'sweetalert2';
+
+const Toast = Swal.mixin({
+  toast: true,
+  position: 'top-end',
+  showConfirmButton: false,
+  timerProgressBar: true,
+  didOpen: toast => {
+    toast.addEventListener('mouseenter', Swal.stopTimer);
+    toast.addEventListener('mouseleave', Swal.resumeTimer);
+  }
+});
 
 const Register: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -18,21 +30,38 @@ const Register: React.FC = () => {
 
   const handleRegister = () => {
     if (password !== confirmPassword) {
-      alert('As senhas não estão iguais');
+      Toast.fire({
+        icon: 'warning',
+        title: 'As senhas não estão iguais',
+        timer: 2000
+      });
+      // alert('As senhas não estão iguais');
       clearRegister();
       return;
     }
 
     const findUser = userRedux.find(user => user.email === email);
     if (findUser) {
-      alert('Usuário já existe');
+      Toast.fire({
+        icon: 'warning',
+        title: 'Usuário já existe',
+        timer: 2000
+      });
+      // alert('Usuário já existe');
       clearRegister();
       return;
     }
 
     dispatch(addContact({ email, errands: [], password }));
-    alert('Usuário cadastrado com sucesso');
+
+    Toast.fire({
+      icon: 'success',
+      title: 'Usuário cadastrado com sucesso',
+      timer: 2000
+    });
+
     navigate('/');
+    return true;
   };
 
   const clearRegister = () => {
