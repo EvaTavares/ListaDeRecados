@@ -5,7 +5,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import ResponsiveAppBar from '../components/ResponsiveAppBar';
 import { defaultTheme } from '../themes';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
-import { selectById } from '../store/modules/contactsSlice';
+import { selectById, updateContact } from '../store/modules/contactsSlice';
 import { addAllErrands, addErrand, removeErrand, selectAll } from '../store/modules/errandsSlice';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
@@ -14,10 +14,13 @@ import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import ErrandType from '../types/ErrandType';
 import ContainerChina from '../components/ContainerChina';
+import ModalEdit from '../components/ModalEdit';
 
 const ErrandHome: React.FC = () => {
   const [title, setTitle] = useState<string>('');
   const [description, setDescription] = useState<string>('');
+  const [openModal, setOpenModal] = React.useState(false);
+  const [errandEdit, setErrandEdit] = useState<ErrandType | undefined>();
 
   const loggedUser = useAppSelector(state => state.loggedUser);
   const userRedux = useAppSelector(state => selectById(state, loggedUser));
@@ -30,7 +33,11 @@ const ErrandHome: React.FC = () => {
     if (userRedux?.errands) {
       dispatch(addAllErrands(userRedux.errands));
     }
-  }, [userRedux?.errands, dispatch]);
+  }, []);
+
+  useEffect(() => {
+    dispatch(updateContact({ id: loggedUser, changes: { errands: errandListRedux } }));
+  }, [errandListRedux]);
 
   useEffect(() => {
     if (!loggedUser) {
@@ -53,7 +60,7 @@ const ErrandHome: React.FC = () => {
             <Typography variant="body1">{item.description}</Typography>
 
             <IconButton>
-              <EditIcon />
+              <EditIcon onClick={() => handleOpenModal(item)} />
             </IconButton>
             <IconButton onClick={() => handleDelete(item)}>
               <DeleteIcon />
@@ -62,7 +69,16 @@ const ErrandHome: React.FC = () => {
         </React.Fragment>
       );
     });
-  }, [errandListRedux, open]);
+  }, [errandListRedux, openModal]);
+
+  const handleOpenModal = (item: ErrandType) => {
+    setErrandEdit(item);
+    setOpenModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setOpenModal(false);
+  };
 
   const handleAdd = () => {
     if (!title || !description) {
@@ -135,9 +151,6 @@ const ErrandHome: React.FC = () => {
           <Grid
             item
             xs={12}
-            sm={12}
-            md={12}
-            lg={12}
             style={{
               padding: '20px'
             }}
@@ -155,9 +168,6 @@ const ErrandHome: React.FC = () => {
             <Divider />
             <Grid
               xs={12}
-              sm={12}
-              md={12}
-              lg={12}
               item
               container
               spacing={1}
@@ -174,7 +184,7 @@ const ErrandHome: React.FC = () => {
               noValidate
               autoComplete="off"
             >
-              <Grid item xs={5}>
+              <Grid item xs={12} sm={5}>
                 <TextField
                   fullWidth
                   type="text"
@@ -186,7 +196,7 @@ const ErrandHome: React.FC = () => {
                 />
               </Grid>
 
-              <Grid item xs={5}>
+              <Grid item xs={12} sm={5}>
                 <TextField
                   fullWidth
                   id="outlined-basic"
@@ -197,7 +207,7 @@ const ErrandHome: React.FC = () => {
                 />
               </Grid>
 
-              <Grid item xs={2}>
+              <Grid item xs={12} sm={2}>
                 <Button
                   fullWidth
                   style={{
@@ -226,6 +236,13 @@ const ErrandHome: React.FC = () => {
           </Grid>
         </ContainerChina>
       </ThemeProvider>
+      <ModalEdit
+        actionCancel={handleCloseModal}
+        description={errandEdit?.description ?? ''}
+        title={errandEdit?.title ?? ''}
+        openModal={openModal}
+        id={errandEdit?.id}
+      />
     </React.Fragment>
   );
 };

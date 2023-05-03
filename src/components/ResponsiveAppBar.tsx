@@ -15,14 +15,12 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import { useNavigate } from 'react-router-dom';
 
 // routes
-import routes from '../routes/routes';
+
 import { Badge } from '@mui/material';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 import { selectAll, selectTotal } from '../store/modules/errandsSlice';
 import { clearLoggedUser } from '../store/modules/loggedUser';
 import { updateContact } from '../store/modules/contactsSlice';
-
-const settings = ['Logout'];
 
 function ResponsiveAppBar() {
   const dispatch = useAppDispatch();
@@ -50,7 +48,7 @@ function ResponsiveAppBar() {
   };
 
   const handleLogout = () => {
-    dispatch(updateContact({ id: loggedUser, changes: { errands: errandListRedux } }));
+    // dispatch(updateContact({ id: loggedUser, changes: { errands: errandListRedux } }));
     dispatch(clearLoggedUser());
     navigate('/');
   };
@@ -65,7 +63,6 @@ function ResponsiveAppBar() {
               variant="h6"
               noWrap
               component="a"
-              href="/"
               sx={{
                 mr: 2,
                 display: { xs: 'none', md: 'flex' },
@@ -91,63 +88,10 @@ function ResponsiveAppBar() {
             >
               <MenuIcon />
             </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left'
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left'
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: 'block', md: 'none' }
-              }}
-            >
-              {routes.map(page => (
-                <MenuItem key={page.url} onClick={() => handleCloseNavMenu(page.url)}>
-                  <Typography textAlign="center">{page.label}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
           </Box>
           <EditNoteIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href=""
-            sx={{
-              mr: 2,
-              display: { xs: 'flex', md: 'none' },
-              flexGrow: 1,
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none'
-            }}
-          >
-            LOGO
-          </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {routes.map(page => (
-              <Button
-                key={page.url}
-                onClick={() => handleCloseNavMenu(page.url)}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                {page.label}
-              </Button>
-            ))}
-          </Box>
 
-          <Box sx={{ flexGrow: 0 }}>
+          <Box sx={{ flexGrow: 1, display: 'flex', justifyContent: 'flex-end' }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleLogout} sx={{ p: 0 }}>
                 <LogoutIcon sx={{ color: '#FFCA48' }} fontSize="large" />

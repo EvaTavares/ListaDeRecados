@@ -2,11 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Navigation: React.FC = () => {
-  const links = [
-    { url: '/', label: 'Login' },
-    { url: '/register', label: 'Cadastro' },
-    { url: '/errandsList', label: 'Lista de Recados' }
-  ];
+  const links = [{ url: '/errandsList', label: 'Lista de Recados' }];
 
   return (
     <>
