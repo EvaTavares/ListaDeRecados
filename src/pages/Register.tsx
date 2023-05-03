@@ -1,11 +1,24 @@
-import { Box, Button, Grid, TextField, Typography } from '@mui/material';
+import { Box, Button, Grid, TextField, Typography, Link } from '@mui/material';
 import React, { useState } from 'react';
 import china from '../image/china.jpg';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 import { addContact, selectAll } from '../store/modules/contactsSlice';
 import InputApp from '../components/InputApp';
 import Swal from 'sweetalert2';
+
+function Copyright(props: any) {
+  return (
+    <Typography variant="body2" color="text.secondary" align="center" {...props}>
+      {'Copyright © '}
+      <Link color="inherit" href="https://github.com/EvaTavares" target="_blank">
+        EvaTavares
+      </Link>{' '}
+      {new Date().getFullYear()}
+      {'.'}
+    </Typography>
+  );
+}
 
 const Toast = Swal.mixin({
   toast: true,
@@ -167,14 +180,19 @@ const Register: React.FC = () => {
               >
                 Cadastrar
               </Button>
-              {/* <Alert severity="success">
-                <AlertTitle>Success</AlertTitle>
-                Cadastro realizado com sucesso!
-              </Alert> */}
-              <Typography style={{ marginTop: '2rem', color: '#fff' }}>Já possui uma conta?</Typography>
-              <Typography sx={{ textDecoration: 'none' }} component={Link} to={'/'} style={{ color: '#FFCA48' }}>
-                Fazer Login!
+
+              <Typography style={{ marginTop: '2rem', color: '#fff' }}>
+                Já possui uma conta?
+                <Link
+                  variant="h6"
+                  onClick={() => navigate('/')}
+                  sx={{ textDecoration: 'none', color: '#FFCA48', cursor: 'pointer' }}
+                >
+                  {' '}
+                  Fazer Login!
+                </Link>
               </Typography>
+              <Copyright sx={{ mt: 5, textAlign: 'center' }} />
             </Box>
           </Box>
         </Grid>
