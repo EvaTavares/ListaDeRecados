@@ -92,7 +92,7 @@ function ResponsiveAppBar() {
           <EditNoteIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
 
           <Box sx={{ flexGrow: 1, display: 'flex', justifyContent: 'flex-end' }}>
-            <Tooltip title="Open settings">
+            <Tooltip title="Logout">
               <IconButton onClick={handleLogout} sx={{ p: 0 }}>
                 <LogoutIcon sx={{ color: '#FFCA48' }} fontSize="large" />
               </IconButton>
