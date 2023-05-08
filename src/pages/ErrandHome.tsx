@@ -116,20 +116,20 @@ const ErrandHome: React.FC = () => {
   const handleDelete = (itemDelete: ErrandType) => {
     Swal.fire({
       title: 'Tem certeza que deseja excluir?',
-      text: 'Você não poderá reverter isso!',
+      text: 'Você não poderá reverter esse processo!',
       icon: 'error',
       showCancelButton: true,
       confirmButtonColor: '#5C6103',
       cancelButtonColor: '#d33',
       cancelButtonText: 'Cancelar',
-      confirmButtonText: 'Sim, quero deletar!',
+      confirmButtonText: 'Sim, quero exluir!',
       background: '#AE9626'
     }).then(result => {
       if (result.isConfirmed) {
         dispatch(removeErrand(itemDelete.id));
         // chamar outro dispatch para remover o intem e salvar
         Swal.fire({
-          title: 'Deletado! Seu recado foi excluido com sucesso.',
+          title: 'Excluido! Seu recado foi deletado com sucesso.',
           icon: 'success',
           background: '#AE9626',
           confirmButtonColor: '#5C6103'
@@ -189,7 +189,7 @@ const ErrandHome: React.FC = () => {
                   fullWidth
                   type="text"
                   id="outlined-basic"
-                  label="Recado"
+                  label="Título"
                   variant="outlined"
                   value={title}
                   onChange={e => setTitle(e.target.value)}
