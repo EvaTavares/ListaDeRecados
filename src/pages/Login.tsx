@@ -159,6 +159,7 @@ const Login: React.FC = () => {
             >
               <InputApp
                 label="E-mail"
+                type="email"
                 onChange={e => {
                   setEmail(e.target.value);
                 }}

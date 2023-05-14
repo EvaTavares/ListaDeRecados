@@ -147,6 +147,7 @@ const Register: React.FC = () => {
                 fullWidth
                 id="demo-helper-text-misaligned"
                 label="E-mail"
+                type="email"
                 onChange={e => {
                   setEmail(e.target.value);
                 }}
