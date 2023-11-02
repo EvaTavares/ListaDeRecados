@@ -1,46 +1,65 @@
-# Getting Started with Create React App
+# Projeto Lista de Recados
+Projeto de Front End onde criei uma aplicação web para listar recados.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## :memo: Descrição
+Lista de Recados - É um projeto Front End com CRUD completo e armazenamento no localStorade.
 
-## Available Scripts
+A lista de recados consiste em uma web aplicação com CRUD completo e armazenamento no localStorade. Dispõe a realização de cadastro e login do usuário, assim como a criação, listagem, edição e exclusão de recados dos usuários.
 
-In the project directory, you can run:
+---
 
-### `npm start`
+###  :relaxed: Veja como ficou o site (aperta o play! :arrow_forward:)
+https://github.com/EvaTavares/ListaDeRecados/assets/105613218/388c68a1-e9f9-4f42-bb1f-17e851e3861b
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+ ### :computer: Visualização Desktop 
+ ![desktop](./src/assets/telas/desktop1.png)
+ ![desktop](./src/assets/telas/desktop2.png)
 
-### `npm test`
+ ###  :iphone: Visualização mobile
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+ ![mobile](./src/assets/telas/mobile1.png)
+ ![mobile](./src/assets/telas/mobile2.png)
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## :books: Funcionalidades
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+* <b>Responsividade</b>: webs aplicação responsiva.
+* O sistema aceita cadastro de novos usuários e armazena os dados no localStorage.
+* Os usuários necessitam realizar um login para que tenham acesso as funcionalidades na aplicação.
+* Os usuários podem criar, listar, editar e deletar (CRUD) os seus recados.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Installation
 
-### `npm run eject`
+```bash
+$ npm install
+```
+## Running the app
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```bash
+# development
+$ npm run dev
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+##  :wrench: Tecnologias utilizadas
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+[![NodejsBadge](https://img.shields.io/badge/-Nodejs-339933?style=flat-square&logo=Node.js&logoColor=white)](#)
+[![TypeScript Badge](https://img.shields.io/badge/-TypeScript-007ACC?style=flat-square&logo=typescript&logoColor=white)](#)
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+[![Git Badge](https://img.shields.io/badge/-Git-black?style=flat-square&logo=git)](#)
+[![GitHub Badge](https://img.shields.io/badge/-GitHub-181717?style=flat-square&logo=github)](#)
+[![VSCode Badge](https://img.shields.io/badge/-VSCode-007ACC?style=flat-square&logo=visual-studio-code&logoColor=white)](#)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## :dart: Status do projeto
+:white_check_mark: Projeto Concluído :white_check_mark:
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## :books: License
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Copyright © 2023 Eva Tavares
+This project is [MIT](license) licensed.
+
+```
+
+```
