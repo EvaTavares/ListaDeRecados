@@ -13,13 +13,16 @@ https://github.com/EvaTavares/ListaDeRecados/assets/105613218/388c68a1-e9f9-4f42
 
 
  ### :computer: Visualização Desktop 
- ![desktop](./src/assets/telas/desktop1.png)
- ![desktop](./src/assets/telas/desktop2.png)
+ ![desktop](./src/image/desktopLogin.png)
+ ![desktop](./src/image/desktopCadastro.png)
+ ![desktop](./src/image/desktopRecados.png)
 
  ###  :iphone: Visualização mobile
 
- ![mobile](./src/assets/telas/mobile1.png)
- ![mobile](./src/assets/telas/mobile2.png)
+ ![mobile](./src/image/Mobile1.png)
+ ![mobile](./src/image/Mobile2.png)
+ ![mobile](./src/image/Mobile3.png)
+ 
 
 ---
 
